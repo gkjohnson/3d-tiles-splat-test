@@ -24,7 +24,7 @@ import { replacePivotMaterialWithNodeMaterial } from './plugins/pivotPointNodeMa
 // "KHR_gaussian_splatting" works here. Point at one with the query parameter:
 //
 //   ?url=https://example.com/tileset.json
-const DEFAULT_TILESET_URL = new URL( './data/gs_tileset/tileset.json', import.meta.url ).toString();
+const DEFAULT_TILESET_URL = new URL( './data/gs_tileset_3/tileset.json', import.meta.url ).toString();
 const TILESET_URL = new URLSearchParams( window.location.search ).get( 'url' ) ?? DEFAULT_TILESET_URL;
 
 // the splat shading is authored against an sRGB working space

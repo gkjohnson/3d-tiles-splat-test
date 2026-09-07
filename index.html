@@ -38,16 +38,27 @@
 				display: none;
 			}
 
-			#credits {
+			#footer {
 				position: absolute;
 				bottom: 0;
 				left: 0;
+				right: 0;
+				display: flex;
 				color: white;
 				font-size: 12px;
 				opacity: 0.5;
 				padding: 5px;
 				line-height: 1.25em;
 				pointer-events: none;
+			}
+
+			#dataset-credit {
+				flex: 1;
+			}
+
+			#dataset-credit a {
+				color: #fff;
+				pointer-events: all;
 			}
 		</style>
 
@@ -73,7 +84,10 @@
 	<body>
 		<div id="info">3D Tiles rendered with three.js' GaussianSplatGroup &amp; WebGPURenderer</div>
 		<div id="message"></div>
-		<div id="credits"></div>
+		<div id="footer">
+			<div id="dataset-credit">&ldquo;Denver Red Rocks Amphitheatre (ESRI Drone Sample)&rdquo; by <a href="https://superspl.at/user?id=seeget3d" target="_blank" rel="noopener">Seeget3D</a>, via <a href="https://superspl.at/scene/6cafcb4b" target="_blank" rel="noopener">superspl.at</a></div>
+			<div id="credits"></div>
+		</div>
 		<script type="module" src="./main.js"></script>
 	</body>
 </html>
