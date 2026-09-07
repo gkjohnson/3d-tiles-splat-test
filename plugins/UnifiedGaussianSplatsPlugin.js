@@ -27,7 +27,6 @@ export class UnifiedGaussianSplatsPlugin {
 
 		// tile -> array of group splat ids
 		this._tileIds = new Map();
-		this._visibleTiles = new Set();
 
 	}
 
@@ -37,9 +36,6 @@ export class UnifiedGaussianSplatsPlugin {
 
 		this.group = new GaussianSplatGroup( this._groupOptions );
 		tiles.group.add( this.group );
-
-		this._onDisposeModel = ( { tile } ) => this._removeTile( tile );
-		tiles.addEventListener( 'dispose-model', this._onDisposeModel );
 
 	}
 
@@ -68,7 +64,7 @@ export class UnifiedGaussianSplatsPlugin {
 		// been baked into "scene.matrix", so the world matrices below are the tile set local ones
 		scene.updateMatrixWorld( true );
 
-		const visible = this._visibleTiles.has( tile );
+		const visible = this.tiles.visibleTiles.has( tile );
 		const ids = [];
 		for ( let i = 0, l = splats.length; i < l; i ++ ) {
 
@@ -90,16 +86,6 @@ export class UnifiedGaussianSplatsPlugin {
 
 	setTileVisible( tile, visible ) {
 
-		if ( visible ) {
-
-			this._visibleTiles.add( tile );
-
-		} else {
-
-			this._visibleTiles.delete( tile );
-
-		}
-
 		const ids = this._tileIds.get( tile );
 		if ( ids ) {
 
@@ -118,34 +104,6 @@ export class UnifiedGaussianSplatsPlugin {
 
 	disposeTile( tile ) {
 
-		this._removeTile( tile );
-
-	}
-
-	dispose() {
-
-		const { tiles } = this;
-		if ( tiles ) {
-
-			tiles.removeEventListener( 'dispose-model', this._onDisposeModel );
-
-		}
-
-		if ( this.group ) {
-
-			this.group.removeFromParent();
-			this.group.dispose();
-			this.group = null;
-
-		}
-
-		this._tileIds.clear();
-		this._visibleTiles.clear();
-
-	}
-
-	_removeTile( tile ) {
-
 		const ids = this._tileIds.get( tile );
 		if ( ids ) {
 
@@ -159,7 +117,19 @@ export class UnifiedGaussianSplatsPlugin {
 
 		}
 
-		this._visibleTiles.delete( tile );
+	}
+
+	dispose() {
+
+		if ( this.group ) {
+
+			this.group.removeFromParent();
+			this.group.dispose();
+			this.group = null;
+
+		}
+
+		this._tileIds.clear();
 
 	}
 
