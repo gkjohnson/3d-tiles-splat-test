@@ -5,9 +5,8 @@ Standalone test page for rendering Gaussian splat 3D Tiles with
 `GaussianSplatGroup` from [mrdoob/three.js#34290](https://github.com/mrdoob/three.js/pull/34290).
 Requires a browser with WebGPU support.
 
-No build step - three.js is loaded from a CDN pinned to the PR head commit and the
-3d-tiles-renderer source is vendored under `./vendor`. Serve the folder statically and open the
-page:
+No build step - three.js and 3d-tiles-renderer are loaded from a CDN via import maps, with
+three.js pinned to the PR head commit. Serve the folder statically and open the page:
 
 ```
 npx http-server .
