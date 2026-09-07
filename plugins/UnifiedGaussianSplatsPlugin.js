@@ -54,12 +54,6 @@ export class UnifiedGaussianSplatsPlugin {
 
 		} );
 
-		if ( splats.length === 0 ) {
-
-			return;
-
-		}
-
 		// this runs before the scene is added to the group, and the tile transform has already
 		// been baked into "scene.matrix", so the world matrices below are the tile set local ones
 		scene.updateMatrixWorld( true );
@@ -86,14 +80,10 @@ export class UnifiedGaussianSplatsPlugin {
 
 	setTileVisible( tile, visible ) {
 
-		const ids = this._tileIds.get( tile );
-		if ( ids ) {
+		const ids = this._tileIds.get( tile ) ?? [];
+		for ( let i = 0, l = ids.length; i < l; i ++ ) {
 
-			for ( let i = 0, l = ids.length; i < l; i ++ ) {
-
-				this.group.setVisibleAt( ids[ i ], visible );
-
-			}
+			this.group.setVisibleAt( ids[ i ], visible );
 
 		}
 
@@ -104,18 +94,14 @@ export class UnifiedGaussianSplatsPlugin {
 
 	disposeTile( tile ) {
 
-		const ids = this._tileIds.get( tile );
-		if ( ids ) {
+		const ids = this._tileIds.get( tile ) ?? [];
+		for ( let i = 0, l = ids.length; i < l; i ++ ) {
 
-			for ( let i = 0, l = ids.length; i < l; i ++ ) {
-
-				this.group.deleteSplat( ids[ i ] );
-
-			}
-
-			this._tileIds.delete( tile );
+			this.group.deleteSplat( ids[ i ] );
 
 		}
+
+		this._tileIds.delete( tile );
 
 	}
 
