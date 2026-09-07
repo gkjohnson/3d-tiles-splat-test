@@ -107,13 +107,9 @@ export class UnifiedGaussianSplatsPlugin {
 
 	dispose() {
 
-		if ( this.group ) {
-
-			this.group.removeFromParent();
-			this.group.dispose();
-			this.group = null;
-
-		}
+		this.group.removeFromParent();
+		this.group.dispose();
+		this.group = null;
 
 		this._tileIds.clear();
 
