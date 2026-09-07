@@ -55,8 +55,6 @@
 			three.js is pinned to the head commit of the gaussian splat group PR so the page keeps
 			working when the branch is updated: https://github.com/mrdoob/three.js/pull/34290
 			It is served from "src" because the committed build files predate the PR changes.
-
-			The 3d-tiles-renderer source is vendored from the "gs-group" branch under "./vendor".
 		-->
 		<script type="importmap">
 			{
@@ -66,12 +64,8 @@
 					"three/tsl": "https://cdn.jsdelivr.net/gh/bhouston/three.js@601b712ca149c442a2a483a5abe91a5243d63caa/src/Three.TSL.js",
 					"three/addons/": "https://cdn.jsdelivr.net/gh/bhouston/three.js@601b712ca149c442a2a483a5abe91a5243d63caa/examples/jsm/",
 					"three/examples/jsm/": "https://cdn.jsdelivr.net/gh/bhouston/three.js@601b712ca149c442a2a483a5abe91a5243d63caa/examples/jsm/",
-					"3d-tiles-renderer": "./vendor/3d-tiles-renderer/index.js",
-					"3d-tiles-renderer/plugins": "./vendor/3d-tiles-renderer/plugins.js",
-					"3d-tiles-renderer/core": "./vendor/3d-tiles-renderer/core/renderer/index.js",
-					"3d-tiles-renderer/core/plugins": "./vendor/3d-tiles-renderer/core/plugins/index.js",
-					"3d-tiles-renderer/three": "./vendor/3d-tiles-renderer/three/renderer/index.js",
-					"3d-tiles-renderer/three/plugins": "./vendor/3d-tiles-renderer/three/plugins/index.js"
+					"3d-tiles-renderer": "https://cdn.jsdelivr.net/npm/3d-tiles-renderer@0.5.2/build/index.js",
+					"3d-tiles-renderer/plugins": "https://cdn.jsdelivr.net/npm/3d-tiles-renderer@0.5.2/build/index.plugins.js"
 				}
 			}
 		</script>
